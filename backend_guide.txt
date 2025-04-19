@@ -1,0 +1,44 @@
+Centex LMS Backend Architecture Guide
+=====================================
+
+1. Core Project Architecture
+----------------------------
+- Modular design with separation of concerns between:
+  - Auth Context (@/context/AuthContext)
+  - Theme Context (@/context/ThemeContext)
+  - API Services (REST endpoints)
+  - Data Models (TypeScript interfaces)
+
+2. Key Component Interactions
+------------------------------
+Auth Context ⇄ Theme Context:
+- Authentication state influences UI theming
+- Theme preferences persisted via user profile API
+
+3. API Endpoint Structure
+-------------------------
+Base URL: https://api.centex-lms.com/v1
+
+| Endpoint          | Method | Description                  |
+|--------------------|--------|------------------------------|
+| /auth/login       | POST   | JWT authentication           |
+| /user/preferences | GET    | Retrieve theme preferences   |
+| /courses          | GET    | List available courses       |
+
+4. Data Flow Diagram
+--------------------
+1. User interaction → Component → Context Update
+2. Context Change → API Sync → Backend Validation
+3. Response Handling → State Update → UI Render
+
+5. Environment Requirements
+---------------------------
+- Node.js 18+
+- Expo SDK 49+
+- TypeScript 5.0+
+- Testing: Jest/React Testing Library
+
+Compatibility Notes:
+- Aligns with existing README.md structure
+- References components from @/components
+- Matches TypeScript interfaces from profile.tsx/exams.tsx
